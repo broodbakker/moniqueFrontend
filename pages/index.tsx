@@ -4,9 +4,11 @@ import Head from '../components/head'
 import Nav from '../components/nav'
 
 const Home = () => (
-  <div>test type
+  <div>
+    <div> i am using iss53
    </div>
-   )
+  </div>
+)
 
 
 
