@@ -1,12 +1,12 @@
 import React from 'react'
 import Nav from "../components/nav"
 
-const Home = () => (
-  <div><Nav />home
+const Quirky = () => (
+  <div><Nav />quirky
 
   </div>
 )
 
 
 
-export default Home
+export default Quirky
