@@ -28,7 +28,6 @@ const Nav = () =>
       <a>space & Tech</a>
     </Link>
 
-
   </nav>
 
 
