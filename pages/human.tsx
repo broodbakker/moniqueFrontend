@@ -1,12 +1,12 @@
 import React from 'react'
 import Nav from "../components/nav"
 
-const Home = () => (
-  <div><Nav />home
+const Human = () => (
+  <div><Nav />human
 
   </div>
 )
 
 
 
-export default Home
+export default Human
