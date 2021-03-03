@@ -36,21 +36,23 @@ function a11yProps(index: any) {
 
 
 const tabNameToIndex = {
-  0: "/geschiedenis",
-  1: "/nature",
-  2: "/human",
-  3: "/quirky",
-  4: "/space",
-  5: "/tech"
+  0: "/",
+  1: "/geschiedenis",
+  2: "/nature",
+  3: "/human",
+  4: "/quirky",
+  5: "/space",
+  6: "/tech"
 }
 
 const indexToTabName = {
-  "/geschiedenis": 0,
-  "/nature": 1,
-  "/human": 2,
-  "/quirky": 3,
-  "/space": 4,
-  "/tech": 5
+  "/": 0,
+  "/geschiedenis": 1,
+  "/nature": 2,
+  "/human": 3,
+  "/quirky": 4,
+  "/space": 5,
+  "/tech": 6
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -87,12 +89,13 @@ const Nav = () => {
           textColor="primary"
           aria-label="scrollable force tabs example"
         >
-          <Tab label="geschiedenis"{...a11yProps(0)} />
-          <Tab label="nature"  {...a11yProps(1)} />
-          <Tab label="human"  {...a11yProps(2)} />
-          <Tab label="quirky"  {...a11yProps(3)} />
-          <Tab label="space"  {...a11yProps(4)} />
-          <Tab label="tech"  {...a11yProps(5)} />
+          <Tab label="Home"{...a11yProps(0)} />
+          <Tab label="geschiedenis"{...a11yProps(1)} />
+          <Tab label="nature"  {...a11yProps(2)} />
+          <Tab label="human"  {...a11yProps(3)} />
+          <Tab label="quirky"  {...a11yProps(4)} />
+          <Tab label="space"  {...a11yProps(5)} />
+          <Tab label="tech"  {...a11yProps(6)} />
         </Tabs>
       </AppBar>
     </div>
