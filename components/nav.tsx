@@ -1,8 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
-import { Typography } from '@material-ui/core';
-import { navLink } from "../variables"
-
 
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import { makeStyles } from '@material-ui/core/styles';
@@ -13,78 +9,95 @@ import RestoreIcon from '@material-ui/icons/Restore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
-import Box from '@material-ui/core/Box';
 
-const Nav = () =>
 
-  <Box bgcolor="blue" color="blue" p={3}>
-    <nav>
-      <Link href={navLink.home}>
-        <a>Home</a>
-      </Link>
-
-      <Link href={navLink.quirky}>
-        <a>Quirky</a>
-      </Link>
-
-      <Link href={navLink.human}>
-        <a>Human</a>
-      </Link>
-
-      <Link href={navLink.geschiedenis}>
-        <a>Geschiedenis</a>
-      </Link>
-
-      <Link href={navLink.nature}>
-        <a>Nature</a>
-      </Link>
-
-      <Link href={navLink.spaceTech}>
-        <a>space & Tech</a>
-      </Link>
-
-    </nav>
-
-  </Box>
+import { Theme } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import PhoneIcon from '@material-ui/icons/Phone';
+import PersonPinIcon from '@material-ui/icons/PersonPin';
+import HelpIcon from '@material-ui/icons/Help';
+import ShoppingBasket from '@material-ui/icons/ShoppingBasket';
+import ThumbDown from '@material-ui/icons/ThumbDown';
+import ThumbUp from '@material-ui/icons/ThumbUp';
+import Router from 'next/router'
+import { useRouter } from 'next/router'
 
 
 
-// const useStyles = makeStyles({
-//   root: {
-//     width: 500,
-//   },
-// });
-
-// const Nav = () => {
-//   const classes = useStyles();
-//   const [value, setValue] = React.useState('recents');
-
-//   const handleChange = (event: any, newValue: any) => {
-//     setValue(newValue);
-//   };
-
-//   return (
-//     <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
-
-
-//       <BottomNavigationAction label="Recents" bgcolor="green" value="recents" icon={<RestoreIcon />} />
-//       <BottomNavigationAction label="Recents" value="recents" icon={<RestoreIcon />} />
-
-//       <Link href={navLink.nature}>
-//         <BottomNavigationAction label="Nearby" value="nearby" icon={<LocationOnIcon />} />
-//       </Link>
-
-//       <Link href={navLink.geschiedenis}>
-//         <BottomNavigationAction label="Recents" value="recents" icon={<RestoreIcon />} />
-//       </Link>
+function a11yProps(index: any) {
+  return {
+    id: `scrollable-force-tab-${index}`,
+    'aria-controls': `scrollable-force-tabpanel-${index}`,
+  };
+}
 
 
 
+const tabNameToIndex = {
+  0: "/geschiedenis",
+  1: "/nature",
+  2: "/human",
+  3: "/quirky",
+  4: "/space",
+  5: "/tech"
+}
 
+const indexToTabName = {
+  "/geschiedenis": 0,
+  "/nature": 1,
+  "/human": 2,
+  "/quirky": 3,
+  "/space": 4,
+  "/tech": 5
+}
 
-//     </BottomNavigation>
-//   );
-// }
+const useStyles = makeStyles((theme: Theme) => ({
+  root: {
+    flexGrow: 1,
+    width: '100%',
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
+
+const Nav = () => {
+  const classes = useStyles();
+  const router = useRouter()
+  const num: number = indexToTabName[router.route]
+
+  const [value, setValue] = React.useState(num);
+
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    setValue(newValue);
+
+    const path: string = tabNameToIndex[newValue]
+    router.push(path)
+  };
+
+  return (
+    <div className={classes.root}>
+      <AppBar position="static" color="default">
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          variant="scrollable"
+          scrollButtons="on"
+          indicatorColor="primary"
+          textColor="primary"
+          aria-label="scrollable force tabs example"
+        >
+          <Tab label="geschiedenis"{...a11yProps(0)} />
+          <Tab label="nature"  {...a11yProps(1)} />
+          <Tab label="human"  {...a11yProps(2)} />
+          <Tab label="quirky"  {...a11yProps(3)} />
+          <Tab label="space"  {...a11yProps(4)} />
+          <Tab label="tech"  {...a11yProps(5)} />
+        </Tabs>
+      </AppBar>
+    </div>
+  );
+}
 
 
 

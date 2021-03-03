@@ -1,12 +1,12 @@
 import React from 'react'
 import Nav from "../components/nav"
 
-const SpaceTech = () => (
-  <div><Nav />space & tech
+const Tech = () => (
+  <div><Nav />Tech
 
   </div>
 )
 
 
 
-export default SpaceTech
+export default Tech
