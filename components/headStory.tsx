@@ -19,7 +19,18 @@ const useStyles = makeStyles({
   },
   media: {
     height: "100%",
+    position: "relative"
   },
+  content: {
+    position: "absolute",
+    bottom: 0
+  },
+
+  title: {
+    lineHeight: 1.2,
+    fontWeight: 900,
+    color: "white"
+  }
 });
 
 
@@ -27,8 +38,8 @@ const HeadStory = () => {
   const classes = useStyles();
 
   return (
-    <Box bgcolor="orange" color="blue" p={3}>
-      <Box p={3} bgcolor="yellow" height="40vw" borderRadius={4} >
+    <Box bgcolor="orange" color="blue" p={1}>
+      <Box p={1} bgcolor="yellow" height="40vw" borderRadius={4} >
 
         <Card className={classes.root}>
 
@@ -37,10 +48,12 @@ const HeadStory = () => {
             title="Contemplative Reptile"
             className={classes.media}
           >
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                {content.title}
-              </Typography>
+            <CardContent className={classes.content}>
+              <Box  >
+                <Typography variant="h6" color="secondary" align="left" component="h2" className={classes.title}>
+                  {content.title}
+                </Typography>
+              </Box  >
 
             </CardContent>
           </CardMedia>
