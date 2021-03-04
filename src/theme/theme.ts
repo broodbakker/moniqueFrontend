@@ -1,35 +1,29 @@
-import { createMuiTheme, ThemeOptions } from '@material-ui/core'
-import { orange } from '@material-ui/core/colors'
+import { createMuiTheme } from '@material-ui/core'
 
-export const theme = createMuiTheme({ palette: { primary: { main: orange[500] } }, spacing: 4, shape: { borderRadius: 10 } })
+export const theme = createMuiTheme({
+  typography: {
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+  },
+  palette: {
+    primary: { main: "rgba(46,124,158,1)" },
+    secondary: {
+      main: "rgba(115,229,131,1)"
 
-export const paletteColorsDark = {
-  primary: '#0f4c75',
-  secondary: '#3282b8',
-  error: '#E44C65',
-  background: '#1b262c',
-  text: '#bbe1fa',
-}
-
-export const paletteColorsLight = {
-  primary: '#6886c5',
-  secondary: '#ffe0ac',
-  error: '#E44C65',
-  background: '#f9f9f9',
-  text: '#050505',
-}
-
-const options = (dark: boolean): ThemeOptions => {
-  const paletteColors = dark ? paletteColorsDark : paletteColorsLight
-  return {
-    palette: {
-      type: dark ? 'dark' : 'light',
-      primary: {
-        main: paletteColors.primary,
-      },
-      // ...
+      //#fb743e
     }
-  }
-}
-export const darkTheme = createMuiTheme(options(true))
-export const lightTheme = createMuiTheme(options(false))
+  },
+  spacing: 4,
+  shape: { borderRadius: 10 }
+})
+
