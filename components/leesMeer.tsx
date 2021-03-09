@@ -63,10 +63,11 @@ const getSameCategory = (category: string, notThisArticle: number) => {
 
 const LeesMeer = ({ nameOfCategory, notThisArticle }: any) => {
   const articles = getSameCategory(nameOfCategory, notThisArticle)
+
   const classes = useStyles();
   return (
 
-    <>{articles && <div className={classes.root}>
+    <>{articles.length !== 0 && <div className={classes.root}>
       <Typography variant="subtitle1" className={classes.title} >
         Lees Meer
 </Typography>
