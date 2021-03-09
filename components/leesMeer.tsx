@@ -65,14 +65,18 @@ const LeesMeer = ({ nameOfCategory, notThisArticle }: any) => {
   const articles = getSameCategory(nameOfCategory, notThisArticle)
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+
+    <>{articles && <div className={classes.root}>
       <Typography variant="subtitle1" className={classes.title} >
         Lees Meer
 </Typography>
       {articles.map((articleData, index) => {
         if (index < 5) return <Article articleData={articleData} key={index} />
       })}
-    </div>
+    </div>}
+    </>
+
+
   )
 }
 
