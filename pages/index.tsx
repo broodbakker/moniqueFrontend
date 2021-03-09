@@ -1,10 +1,8 @@
 import React from 'react'
 import Nav from "../components/nav";
 import Header from "../components/header";
-import MainArticle from "../components/mainArticle";
-import ListOfArticles from "../components/listOfArticles";
-import { Pagination } from '@material-ui/lab';
 
+import Articles from "../components/articles"
 import { Container, Box } from '@material-ui/core';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
@@ -28,6 +26,13 @@ const useStyles = makeStyles((theme: Theme) => {
 
 const Home = () => {
   const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    setValue(newValue);
+  };
+
+
+
   return (
     <>
       <Box className={classes.headerBar}>
@@ -35,9 +40,7 @@ const Home = () => {
         <Nav />
       </Box>
       <Container maxWidth="md" className={classes.container}>
-        <MainArticle />
-        <ListOfArticles />
-        <Pagination count={11} defaultPage={6} siblingCount={0} />
+        <Articles selectedArticles={"recent"} />
       </Container>
     </>
   )

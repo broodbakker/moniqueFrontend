@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) => {
 });
 
 
-const Nature = () => {
+const History = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
@@ -40,10 +40,10 @@ const Nature = () => {
         <Nav />
       </Box>
       <Container maxWidth="md" className={classes.container}>
-        <Articles selectedArticles={"nature"} />
+        <Articles selectedArticles={"history"} />
       </Container>
     </>
   )
 }
 
-export default Nature
+export default History

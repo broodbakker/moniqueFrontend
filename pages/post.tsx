@@ -1,8 +1,9 @@
 import React from 'react'
+import ContentPost from "../components/contentArticle"
 import Nav from "../components/nav";
 import Header from "../components/header";
 
-import Articles from "../components/articles"
+
 import { Container, Box } from '@material-ui/core';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
@@ -24,26 +25,18 @@ const useStyles = makeStyles((theme: Theme) => {
 });
 
 
-const Nature = () => {
+const Post = () => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setValue(newValue);
-  };
-
-
-
   return (
     <>
       <Box className={classes.headerBar}>
         <Header />
-        <Nav />
       </Box>
       <Container maxWidth="md" className={classes.container}>
-        <Articles selectedArticles={"nature"} />
+        <ContentPost />
       </Container>
     </>
   )
 }
 
-export default Nature
+export default Post

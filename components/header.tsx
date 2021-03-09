@@ -1,8 +1,13 @@
 import React from 'react'
+import Link from 'next/link'
 
 import SearchIcon from '@material-ui/icons/Search';
 import { createStyles, fade, Theme, makeStyles } from '@material-ui/core/styles';
 import { Box, Toolbar, Typography, InputBase } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+import SaveIcon from '@material-ui/icons/Save';
+import ContactPhoneIcon from '@material-ui/icons/ContactPhone';
 
 const useStyles = makeStyles((theme: Theme) => {
   const primary = theme.palette.primary.main
@@ -23,9 +28,11 @@ const useStyles = makeStyles((theme: Theme) => {
       menuButton: {
         marginRight: theme.spacing(1),
       },
-      LogoTitle: {
+      logoTitle: {
         flexGrow: 1,
         display: 'block',
+        textDecoration: "none",
+        color: "white",
         [theme.breakpoints.up('sm')]: {
           fontSize: "1.2rem",
         },
@@ -62,6 +69,18 @@ const useStyles = makeStyles((theme: Theme) => {
           width: '20ch',
         }
       },
+      button: {
+        marginRight: theme.spacing(4),
+        borderRadius: theme.spacing(1),
+        textTransform: "none",
+        color: "white",
+        borderColor: "white",
+        fontSize: 14,
+        [theme.breakpoints.up('sm')]: {
+          fontSize: 16,
+        },
+      }
+
     }))
 }
 );
@@ -72,12 +91,28 @@ const Header = () => {
   return (
     <Box color="white" className={classes.root} >
       <Toolbar className={classes.toolbar} >
-        <Typography className={classes.LogoTitle} variant="subtitle1" noWrap>
-          Monique Siemsen
-          </Typography>
-        <Typography className={classes.LogoTitle} variant="subtitle1" noWrap>
-          logo
-          </Typography>
+
+
+        <Link href="/" >
+          <a className={classes.logoTitle} >
+            Logo
+          </a>
+        </Link>
+
+
+
+        <Button
+          variant="outlined"
+
+          size="small"
+          startIcon={<ContactPhoneIcon />}
+          className={classes.button}
+        >
+          Contact
+      </Button>
+
+
+
         <div className={classes.search}>
           <div className={classes.searchIcon}>
             <SearchIcon />

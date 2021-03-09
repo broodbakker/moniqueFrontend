@@ -1,10 +1,19 @@
-import React from 'react'
-import Nav from "../components/nav";
-import Header from "../components/header";
 
-import Articles from "../components/articles"
+
+
+
+
+
+import React from 'react'
+import ContentPost from "../../components/contentArticle"
+import Nav from "../../components/nav";
+import Header from "../../components/header";
+
+
 import { Container, Box } from '@material-ui/core';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import { useRouter } from "next/router"
+
 
 const useStyles = makeStyles((theme: Theme) => {
   return (
@@ -23,27 +32,30 @@ const useStyles = makeStyles((theme: Theme) => {
   )
 });
 
+export default function DynamicPage() {
+  const router: any = useRouter()
+  const {
+    query: { slug },
+  } = router
 
-const Nature = () => {
+
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setValue(newValue);
-  };
-
-
-
   return (
     <>
       <Box className={classes.headerBar}>
         <Header />
-        <Nav />
       </Box>
       <Container maxWidth="md" className={classes.container}>
-        <Articles selectedArticles={"nature"} />
+        <ContentPost slug={slug} />
       </Container>
     </>
   )
 }
 
-export default Nature
+
+
+
+
+
+
+

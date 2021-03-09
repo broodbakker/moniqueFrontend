@@ -1,12 +1,49 @@
 import React from 'react'
-import Nav from "../components/nav"
+import Nav from "../components/nav";
+import Header from "../components/header";
 
-const Human = () => (
-  <div><Nav />human
+import Articles from "../components/articles"
+import { Container, Box } from '@material-ui/core';
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
-  </div>
-)
+const useStyles = makeStyles((theme: Theme) => {
+  return (
+    createStyles({
+      headerBar: {
+        boxShadow: "none",
+        width: "100%",
+        position: "fixed",
+        zIndex: 10
+      },
+      container: {
+        paddingTop: 96,
+        [theme.breakpoints.up('sm')]: { paddingTop: 120, },
+      }
+    })
+  )
+});
 
 
+const Human = () => {
+  const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    setValue(newValue);
+  };
+
+
+
+  return (
+    <>
+      <Box className={classes.headerBar}>
+        <Header />
+        <Nav />
+      </Box>
+      <Container maxWidth="md" className={classes.container}>
+        <Articles selectedArticles={"human"} />
+      </Container>
+    </>
+  )
+}
 
 export default Human
