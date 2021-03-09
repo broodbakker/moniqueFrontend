@@ -1,5 +1,5 @@
 import React from 'react'
-import { useRouter } from 'next/router'
+import { useRouter, NextRouter } from 'next/router'
 
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { AppBar, useScrollTrigger, Tabs, Tab } from '@material-ui/core';
