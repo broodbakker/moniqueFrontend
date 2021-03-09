@@ -53,16 +53,16 @@ const useStyles = makeStyles((theme: Theme) => {
 );
 
 
-const getSameCategory = (category: string) => {
-  const test = content.main.filter((content) => {
-    if (content.category === category)
+const getSameCategory = (category: string, notThisArticle: number) => {
+  const test = content.main.filter((content, index) => {
+    if (content.category === category && notThisArticle !== index)
       return content
   })
   return test
 }
 
-const LeesMeer = ({ nameOfCategory }: any) => {
-  const articles = getSameCategory(nameOfCategory)
+const LeesMeer = ({ nameOfCategory, notThisArticle }: any) => {
+  const articles = getSameCategory(nameOfCategory, notThisArticle)
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -78,6 +78,7 @@ const LeesMeer = ({ nameOfCategory }: any) => {
 
 
 const Article = ({ articleData }: any) => {
+  console.log()
   const classes = useStyles();
 
   const id = `${articleData.id}`

@@ -106,7 +106,7 @@ const ContentPost = ({ slug }: any) => {
 
 
         <div dangerouslySetInnerHTML={{ __html: post.body }}></div>
-        <LeesMeer nameOfCategory={post.category} />
+        <LeesMeer nameOfCategory={post.category} notThisArticle={post.id} />
       </div>}
 
 
