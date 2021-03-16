@@ -33,7 +33,6 @@ export default function DynamicPage() {
     query: { slug },
   } = router
 
-
   const classes = useStyles();
   return (
     <>
@@ -41,7 +40,7 @@ export default function DynamicPage() {
         <Header />
       </Box>
       <HomeContent />
-      test
+      test1
       <Container maxWidth="md" className={classes.container}>
         <ContentPost slug={slug} />
       </Container>
