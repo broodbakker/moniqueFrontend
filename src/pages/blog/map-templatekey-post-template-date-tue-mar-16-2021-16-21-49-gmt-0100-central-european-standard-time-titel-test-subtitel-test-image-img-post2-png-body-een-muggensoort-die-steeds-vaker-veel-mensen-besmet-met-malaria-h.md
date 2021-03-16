@@ -1,7 +1,7 @@
 ---
 templateKey: post.template
 titel: de eerste post
-Subtitel: test
+Subtitel: dit is de tweede subtitel
 date: 2021-03-16T15:21:49.273Z
 image: /img/post2.png
 onderwerp: history
