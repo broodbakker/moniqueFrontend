@@ -41,6 +41,7 @@ export default function DynamicPage() {
         <Header />
       </Box>
       <HomeContent />
+      test
       <Container maxWidth="md" className={classes.container}>
         <ContentPost slug={slug} />
       </Container>
