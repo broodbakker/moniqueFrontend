@@ -1,12 +1,5 @@
-
-
-
-
-
-
 import React from 'react'
 import ContentPost from "../../components/contentArticle"
-import Nav from "../../components/nav";
 import Header from "../../components/header";
 
 
@@ -14,6 +7,8 @@ import { Container, Box } from '@material-ui/core';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { useRouter } from "next/router"
 
+
+import { attributes } from "../../content/home.md"
 
 const useStyles = makeStyles((theme: Theme) => {
   return (
@@ -33,6 +28,9 @@ const useStyles = makeStyles((theme: Theme) => {
 });
 
 export default function DynamicPage() {
+
+  let { title, cats } = attributes;
+  console.log(title, "here")
   const router: any = useRouter()
   const {
     query: { slug },
@@ -45,7 +43,9 @@ export default function DynamicPage() {
       <Box className={classes.headerBar}>
         <Header />
       </Box>
+
       <Container maxWidth="md" className={classes.container}>
+        <div>{title}</div>
         <ContentPost slug={slug} />
       </Container>
     </>

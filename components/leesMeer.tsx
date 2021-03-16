@@ -3,10 +3,8 @@ import React from 'react'
 import content from "../content/content.json"
 import Link from 'next/link'
 
-
 import { makeStyles, fade, createStyles, Theme } from '@material-ui/core/styles';
 import { Box, Grid, Typography, CardMedia } from '@material-ui/core';
-
 
 const useStyles = makeStyles((theme: Theme) => {
   return (
@@ -27,7 +25,6 @@ const useStyles = makeStyles((theme: Theme) => {
       test: {
         lineHeight: 0.3
       },
-
       article: {
         backgroundColor: theme.palette.grey[50],
         marginBottom: theme.spacing(1),
@@ -40,8 +37,6 @@ const useStyles = makeStyles((theme: Theme) => {
         textDecoration: "none",
 
       },
-
-
       titleArticle: {
         marginLeft: theme.spacing(1),
         fontWeight: 600,
@@ -61,9 +56,11 @@ const getSameCategory = (category: string, notThisArticle: number) => {
   return test
 }
 
+
+
+
 const LeesMeer = ({ nameOfCategory, notThisArticle }: any) => {
   const articles = getSameCategory(nameOfCategory, notThisArticle)
-
   const classes = useStyles();
   return (
 
