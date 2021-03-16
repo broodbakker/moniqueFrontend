@@ -1,45 +1,35 @@
 backend:
-  name: git-gateway
+  name: test-repo
   branch: master
-media_folder: public/img
+
+media_folder: static/img
+public_folder: /img
 publish_mode: editorial_workflow
-public_folder: img
+
 collections:
   - name: "Posts"
-    label: "Posts"
-    label_singular: 'Post'
+    label: "posts"
+    label_singular: "Post"
     description: >
-      The description is a great place for tone setting, high level information, and editing
-      guidelines that are specific to a collection.
-    folder: '_posts'
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    summary: '{{title}} -- {{year}}/{{month}}/{{day}}'
+      Artikelen van Monique
+    folder: "src/pages/blog"
     create: true
-    view_filters:
-      - label: Posts With Index
-        field: title
-        pattern: 'This is post #'
-      - label: Posts Without Index
-        field: title
-        pattern: front matter post
-      - label: Drafts
-        field: draft
-        pattern: true
-    view_groups:
-      - label: Year
-        field: date
-        pattern: \d{4}
-      - label: Drafts
-        field: draft
-      field: language
-      value: e
-      fields:
-        - { label: "Title", name: "title", widget: "string"}
-        - { label: "Publish Date", name: "date", widget: "datetime" }
-        - { label: "Body", name: "body", widget: "markdown"}
-        - label: 'Cats'
-          name: "cats"
-          widget: list
-          fields:
-            - { label: "Name", name: "name", widget: "string"}
-            - { label: "Description", name: "description", widget: "text"}
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "post.template"}
+      - {label: "Titel", name: "titel", widget: "string"}
+      - {label: "Subtitel", name: "Subtitel", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - label: 'Onderwerp'
+        name: "onderwerp"
+        widget: select
+        options: ["history", "nature", "human","quirky","space","tech"]
+      - label: "Tags"
+        name: "tag"
+        collapsed: false
+        widget: "list"
+        fields:
+          - {label: Add tag, name: add tag, widget: string,}
+
+
