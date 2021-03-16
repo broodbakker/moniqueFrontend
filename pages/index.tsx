@@ -2,6 +2,8 @@ import React from 'react'
 import Nav from "../components/nav";
 import Header from "../components/header";
 
+
+import Head from '../components/head'
 import Articles from "../components/articles"
 import { Container, Box } from '@material-ui/core';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
@@ -37,6 +39,7 @@ const Home = () => {
 
   return (
     <>
+      <Head title="nieuws" />
       <Box className={classes.headerBar}>
         <Header />
         <Nav />
