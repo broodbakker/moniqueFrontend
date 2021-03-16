@@ -8,7 +8,7 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { useRouter } from "next/router"
 
 
-import { attributes } from "../../content/home.md"
+import { attributes, react as HomeContent } from "../../content/home.md"
 
 const useStyles = makeStyles((theme: Theme) => {
   return (
@@ -28,9 +28,6 @@ const useStyles = makeStyles((theme: Theme) => {
 });
 
 export default function DynamicPage() {
-
-  let { title, cats } = attributes;
-  console.log(title, "here")
   const router: any = useRouter()
   const {
     query: { slug },
@@ -43,9 +40,8 @@ export default function DynamicPage() {
       <Box className={classes.headerBar}>
         <Header />
       </Box>
-
+      <HomeContent />
       <Container maxWidth="md" className={classes.container}>
-        <div>{title}</div>
         <ContentPost slug={slug} />
       </Container>
     </>
