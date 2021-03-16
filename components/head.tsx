@@ -25,6 +25,7 @@ const Head = ({ props }: any) => (
       property="og:description"
       content={props.description || defaultDescription}
     />
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <meta name="twitter:site" content={props.url || defaultOGURL} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={props.ogImage || defaultOGImage} />
