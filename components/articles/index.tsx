@@ -3,18 +3,15 @@ import ListOfArticles from "./listOfArticles"
 import MainArticle from "./mainArticle"
 import { Pagination } from '@material-ui/lab';
 
-import content from "../../content/content.json"
 
 
-const searchFunction = (selectedArticles: string) => {
-  if (selectedArticles === "recent") return content.main
-  const selectedArticlesContent = content.main.filter((content) =>
-    content.category === selectedArticles
+const searchFunction = (selectedArticles: string, postsList: any) => {
+  if (selectedArticles === "recent") return postsList
+  const selectedArticlesContent = postsList.filter((content: any) =>
+    content.attributes.onderwerp === selectedArticles
   )
   return selectedArticlesContent
 }
-
-
 
 const paginationLogic = (newValue: number, articleListModifiedContent: any) => {
   const start = (newValue - 1) * 4
@@ -25,41 +22,45 @@ const paginationLogic = (newValue: number, articleListModifiedContent: any) => {
   return newArticles
 }
 
-
 const howManyArticlesOnPage = (articleListModifiedContent: any) => {
   const howManyArticles = articleListModifiedContent.length
   return Math.ceil(howManyArticles / 4)
 }
 
 
+const Index = (props: any) => {
+  const { postsList, selectedArticles } = props
 
-const Index = ({ selectedArticles }: any) => {
 
-  const articleListContent = searchFunction(selectedArticles)
+  const articleListContent = searchFunction(selectedArticles, postsList)
+
+
+  //removed the first on list
   const [, ...articleListModifiedContent] = articleListContent
 
-  const pageCount = howManyArticlesOnPage(articleListModifiedContent)
+  const pageCount = howManyArticlesOnPage(articleListContent)
+
+
   const [value, setValue] = React.useState(0);
 
-
-
   const [articles, setArticles] = React.useState(paginationLogic(1, articleListModifiedContent));
+
+
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
     setArticles(paginationLogic(newValue, articleListModifiedContent))
-
   }
 
   return (
     <div>
       <MainArticle articleContent={articleListContent[0]} />
       <ListOfArticles pageIndex={value} articleListContent={articles} />
-      <Pagination count={pageCount} page={value} color="primary" onChange={handleChange} />
+      {/* <Pagination count={pageCount} page={value} color="primary" onChange={handleChange} /> */}
     </div>
   )
 }
 
-
-
 export default Index
+
+

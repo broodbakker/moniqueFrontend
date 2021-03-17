@@ -1,10 +1,9 @@
 import React from 'react'
 
-import { Container, Box, Button, Card, CardMedia, Typography } from '@material-ui/core';
+import { Box, Button, Card, CardMedia, Typography } from '@material-ui/core';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import CreateIcon from '@material-ui/icons/Create';
-
 import content from "../content/content.json"
 import LeesMeer from './leesMeer';
 
@@ -13,8 +12,6 @@ const useStyles = makeStyles((theme: Theme) => {
     createStyles({
       root: {
         height: "100%",
-
-
       },
       title: {
         marginBottom: theme.spacing(3),
@@ -45,15 +42,15 @@ const useStyles = makeStyles((theme: Theme) => {
   )
 });
 
-const ContentPost = ({ slug }: any) => {
-  const post = content.main[slug]
+const ContentPost = ({ blogpost }: any) => {
+
   const classes = useStyles();
   return (
     <div>
-      {slug && <div>   <Box height="60vw" className={classes.con}>
+      {blogpost && <div>   <Box height="60vw" className={classes.con}>
         <Card className={classes.root}>
           <CardMedia
-            image={post.img}
+            image={blogpost.attributes.image}
             title={classes.content}
             className={classes.media}
             src="test"
@@ -63,24 +60,20 @@ const ContentPost = ({ slug }: any) => {
       </Box>
         <div>
           <Typography variant="h6" component="h1" className={classes.title}>
-            {post.title}
+            {blogpost.attributes.titel}
           </Typography>
           <div className={classes.subtitle}>
-
-
             <CreateIcon fontSize="small" />
             <Typography variant="subtitle2" component="p" display="inline" className={classes.author} >
-              {" "}{post.author}{" "}
+              author
             </Typography>
 
             <Typography component="p" display="inline" >
 
             </Typography>
-
-
             <AccessTimeIcon fontSize="small" />
             <Typography variant="subtitle2" component="time" display="inline"  >
-              {" "}{post.datum}{" "}
+              {" "}{blogpost.attributes.date}{" "}
             </Typography>
 
 
@@ -105,16 +98,15 @@ const ContentPost = ({ slug }: any) => {
 
 
 
-        <div dangerouslySetInnerHTML={{ __html: post.body }}></div>
-        <LeesMeer nameOfCategory={post.category} notThisArticle={post.id} />
+        <div dangerouslySetInnerHTML={{ __html: blogpost.html }}></div>
+        {/* <LeesMeer nameOfCategory={post.category} notThisArticle={post.id} /> */}
       </div>}
-
-
 
 
     </div>
   )
 }
+
 
 
 

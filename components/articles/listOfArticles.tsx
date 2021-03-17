@@ -63,6 +63,8 @@ const useStyles = makeStyles((theme: Theme) => {
 
 
 const ListOfArticles = ({ pageIndex, articleListContent }: any) => {
+
+
   const classes = useStyles();
   return (
     <Box color="blue" className={classes.root} >
@@ -73,11 +75,11 @@ const ListOfArticles = ({ pageIndex, articleListContent }: any) => {
         justify="flex-start"
         alignItems="center"
       >
+
         {articleListContent.map((content: any, index: any) => {
-          const update = content.id
+          const update = content.slug
+
           const link = `/posts/${update}`
-
-
           return (
             <Grid container item xs={12} sm={6} key={index}>
               <Link href={link} >
@@ -85,7 +87,7 @@ const ListOfArticles = ({ pageIndex, articleListContent }: any) => {
                   <Box p={1} boxShadow={1} borderRadius={4} display="flex" className={classes.article} >
                     <Box className={classes.image}  >
                       <CardMedia
-                        image={content.img}
+                        image={content.attributes.image}
                         title="Contemplative Reptile"
                         className={classes.media}
                       />
@@ -93,36 +95,26 @@ const ListOfArticles = ({ pageIndex, articleListContent }: any) => {
 
                     <div className={classes.content}>
                       <Typography align="left" variant="caption" component="p" className={classes.title}>
-                        {content.title}
+                        {content.attributes.titel}
                       </Typography>
 
                       <Box className={classes.time}>
                         <AccessTimeIcon fontSize="small" className={classes.date} />
                         <Typography variant="subtitle2" component="time" display="inline" className={classes.date}>
-                          {" "}{content.datum}{" "}
+                          {" "}{content.attributes.date}{" "}
                         </Typography>
                       </Box>
-
                     </div>
                   </Box>
                 </a>
               </Link>
             </Grid>
-
           )
         })}
       </Grid >
     </Box >
   )
 }
-
-
-
-
-
-
-
-
 
 
 export default ListOfArticles

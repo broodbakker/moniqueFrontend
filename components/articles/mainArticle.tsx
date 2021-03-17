@@ -3,7 +3,6 @@ import Link from 'next/link'
 
 import { Box, Card, CardMedia, CardContent, Typography } from '@material-ui/core';
 import { createStyles, fade, Theme, makeStyles } from '@material-ui/core/styles';
-import content from "../../content/content.json"
 
 const useStyles = makeStyles((theme: Theme) => {
 
@@ -31,31 +30,28 @@ const useStyles = makeStyles((theme: Theme) => {
     }))
 })
 
-
 const MainArticle = ({ articleContent }: any) => {
 
   const classes = useStyles();
 
-  const link = `/posts/${articleContent.id}`
+
   return (
-
-
     <Box height="40vw" className={classes.container}>
       {articleContent &&
         <>
-          <Link href={link}>
+          <Link href={`/posts/${articleContent.slug}`}>
             <a>
               <Card className={classes.root}>
                 <CardMedia
-                  image={articleContent.img}
+                  image={articleContent.attributes.image}
                   title={classes.content}
                   className={classes.media}
-                  src="test"
+                  src={articleContent.attributes.image}
                 >
                   <CardContent className={classes.content}>
                     <Box>
                       <Typography variant="h6" color="secondary" align="left" component="h1" className={classes.title}>
-                        {articleContent.title}
+                        {articleContent.attributes.titel}
                       </Typography>
                     </Box>
                   </CardContent>
@@ -65,9 +61,7 @@ const MainArticle = ({ articleContent }: any) => {
           </Link>
         </>
       }
-
     </Box>
-
   )
 }
 

@@ -2,13 +2,10 @@ import React from 'react'
 import ContentPost from "../../components/contentArticle"
 import Header from "../../components/header";
 
-
 import { Container, Box } from '@material-ui/core';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { useRouter } from "next/router"
 
 
-import { attributes, react as HomeContent } from "../../content/home.md"
 
 const useStyles = makeStyles((theme: Theme) => {
   return (
@@ -27,11 +24,8 @@ const useStyles = makeStyles((theme: Theme) => {
   )
 });
 
-export default function DynamicPage() {
-  const router: any = useRouter()
-  const {
-    query: { slug },
-  } = router
+export default function DynamicPage(props: any) {
+
 
   const classes = useStyles();
   return (
@@ -39,16 +33,61 @@ export default function DynamicPage() {
       <Box className={classes.headerBar}>
         <Header />
       </Box>
-      <HomeContent />
-      test1
+
+
       <Container maxWidth="md" className={classes.container}>
-        <ContentPost slug={slug} />
+        <ContentPost blogpost={props.blogpost} />
       </Container>
     </>
   )
 }
 
 
+const importBlogPosts = async () => {
+  // https://medium.com/@shawnstern/importing-multiple-markdown-files-into-a-react-component-with-webpack-7548559fce6f
+  // second flag in require.context function is if subdirectories should be searched
+  const markdownFiles = require.context('../../src/pages/blog', false, /\.md$/).keys()
+    .map(relativePath => relativePath.substring(2));
+
+  return Promise.all(
+    markdownFiles.map(async path => {
+      const markdown = await import(`../../src/pages/blog/${path}`);
+      return { ...markdown, slug: path.substring(0, path.length - 3) };
+    })
+  );
+};
+
+
+
+export async function getStaticPaths() {
+
+  const blogPosts = await importBlogPosts()
+  const slugs = blogPosts.map((blogPost: any) => { return `/posts/${blogPost.slug}` })
+
+
+  return {
+    paths: [
+      // String variant:
+      ...slugs,
+      // Object variant:
+
+    ],
+    fallback: false,
+  }
+}
+
+
+
+export async function getStaticProps(context: any) {
+
+  const blogpost = await import(`../../src/pages/blog/${context.params.slug}.md`).catch(error => null);
+  const json = JSON.parse(JSON.stringify(blogpost));
+
+
+  return {
+    props: { blogpost: json }, // will be passed to the page component as props
+  }
+}
 
 
 
