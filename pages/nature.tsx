@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) => {
 const importBlogPosts = async () => {
   // https://medium.com/@shawnstern/importing-multiple-markdown-files-into-a-react-component-with-webpack-7548559fce6f
   // second flag in require.context function is if subdirectories should be searched
-  const markdownFiles = require.context('../src/pages/blog', false, /\.md$/).keys()
+  const markdownFiles = require.context('../src/posts', false, /\.md$/).keys()
     .map(relativePath => relativePath.substring(2));
 
   return Promise.all(
