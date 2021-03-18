@@ -2,10 +2,24 @@ import React from 'react'
 import ListOfArticles from "./listOfArticles"
 import MainArticle from "./mainArticle"
 import { Pagination } from '@material-ui/lab';
+import { makeStyles, fade, createStyles, Theme } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles((theme: Theme) => {
+  return (
+    createStyles({
+      root: {
+        marginBottom: theme.spacing(10),
+      },
+    }))
+}
+);
+
 
 
 
 const searchFunction = (selectedArticles: string, postsList: any) => {
+  console.log("postsList", postsList)
   if (selectedArticles === "recent") return postsList
   const selectedArticlesContent = postsList.filter((content: any) =>
     content.attributes.onderwerp === selectedArticles
@@ -29,6 +43,8 @@ const howManyArticlesOnPage = (articleListModifiedContent: any) => {
 
 
 const Index = (props: any) => {
+  const classes = useStyles();
+
   const { postsList, selectedArticles } = props
 
 
@@ -53,10 +69,10 @@ const Index = (props: any) => {
   }
 
   return (
-    <div>
+    <div className={classes.root}>
       <MainArticle articleContent={articleListContent[0]} />
       <ListOfArticles pageIndex={value} articleListContent={articles} />
-      {/* <Pagination count={pageCount} page={value} color="primary" onChange={handleChange} /> */}
+      <Pagination count={pageCount} page={value} color="primary" onChange={handleChange} />
     </div>
   )
 }

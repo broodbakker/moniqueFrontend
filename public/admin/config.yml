@@ -33,7 +33,12 @@ collections:
       - {label: "Subtitel", name: "Subtitel", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Image", name: "image", widget: "image"}
+
       - {label: "Body", name: "body", widget: "markdown"}
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        default: ["history","human","nature","quirky","space","tech"]
       - name: auteur
         label: Auteur
         widget: relation

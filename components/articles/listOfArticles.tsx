@@ -5,7 +5,7 @@ import Link from 'next/link'
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { makeStyles, fade, createStyles, Theme } from '@material-ui/core/styles';
 import { Box, Grid, Typography, CardMedia } from '@material-ui/core';
-
+import { isoDateToStandardDate } from "../../functions/dateFormating"
 const useStyles = makeStyles((theme: Theme) => {
   return (
     createStyles({
@@ -48,7 +48,8 @@ const useStyles = makeStyles((theme: Theme) => {
         color: theme.palette.primary.dark,
         marginLeft: theme.spacing(1),
         position: "absolute",
-        bottom: 0
+        bottom: 0,
+        width: "100%"
 
       },
       date: {
@@ -56,6 +57,8 @@ const useStyles = makeStyles((theme: Theme) => {
       },
       content: {
         position: "relative",
+        marginLeft: theme.spacing(1),
+        flexGrow: 1
       }
     }))
 }
@@ -78,8 +81,13 @@ const ListOfArticles = ({ pageIndex, articleListContent }: any) => {
 
         {articleListContent.map((content: any, index: any) => {
           const update = content.slug
+          const link = `/posts/${update}`;
+          const newDate = isoDateToStandardDate(content.attributes.date)
 
-          const link = `/posts/${update}`
+
+
+
+
           return (
             <Grid container item xs={12} sm={6} key={index}>
               <Link href={link} >
@@ -101,7 +109,7 @@ const ListOfArticles = ({ pageIndex, articleListContent }: any) => {
                       <Box className={classes.time}>
                         <AccessTimeIcon fontSize="small" className={classes.date} />
                         <Typography variant="subtitle2" component="time" display="inline" className={classes.date}>
-                          {" "}{content.attributes.date}{" "}
+                          {" "}{newDate}
                         </Typography>
                       </Box>
                     </div>

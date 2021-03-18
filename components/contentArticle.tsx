@@ -7,6 +7,9 @@ import CreateIcon from '@material-ui/icons/Create';
 import content from "../content/content.json"
 import LeesMeer from './leesMeer';
 
+
+import { isoDateToStandardDate } from "../functions/dateFormating"
+
 const useStyles = makeStyles((theme: Theme) => {
   return (
     createStyles({
@@ -43,7 +46,7 @@ const useStyles = makeStyles((theme: Theme) => {
 });
 
 const ContentPost = ({ blogpost }: any) => {
-
+  const newDate = isoDateToStandardDate(blogpost.attributes.date)
   const classes = useStyles();
   return (
     <div>
@@ -73,7 +76,7 @@ const ContentPost = ({ blogpost }: any) => {
             </Typography>
             <AccessTimeIcon fontSize="small" />
             <Typography variant="subtitle2" component="time" display="inline"  >
-              {" "}{blogpost.attributes.date}{" "}
+              {" "}{newDate}{" "}
             </Typography>
 
 

@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) => {
 const MainArticle = ({ articleContent }: any) => {
 
 
-  console.log("articleContent", articleContent)
+
   const classes = useStyles();
 
 
