@@ -32,6 +32,8 @@ const useStyles = makeStyles((theme: Theme) => {
 
 const MainArticle = ({ articleContent }: any) => {
 
+
+  console.log("articleContent", articleContent)
   const classes = useStyles();
 
 
@@ -43,10 +45,10 @@ const MainArticle = ({ articleContent }: any) => {
             <a>
               <Card className={classes.root}>
                 <CardMedia
-                  image={articleContent.attributes.image}
+                  image="/img/post2.png"
                   title={classes.content}
                   className={classes.media}
-                  src={articleContent.attributes.image}
+                  src="/img/post2.png"
                 >
                   <CardContent className={classes.content}>
                     <Box>
