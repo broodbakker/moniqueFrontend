@@ -37,7 +37,7 @@ collections:
       - label: "Onderwerp"
         name: "onderwerp"
         widget: "select"
-        default: ["history","human","nature","quirky","space","tech"]
+        options: ["history","human","nature","quirky","space","tech"]
       - name: auteur
         label: Auteur
         widget: relation
