@@ -2,21 +2,21 @@ backend:
   name: git-gateway
   branch: master
 
-media_folder: public/posts
+media_folder: /public/img
 public_folder: /public/img
 publish_mode: editorial_workflow
 
 collections:
   - name: auteurs
     label: Auteurs
-    folder: "auteurs"
+   folder: "src/auteurs"
     create: true
     fields:
       - {name: naam, label: Naam}
 
   - name: tags
     label: Tags
-    folder: "tags"
+   folder: "src/tags"
     create: true
     fields:
       - {name: naam, label: Naam}
@@ -24,7 +24,7 @@ collections:
 
   - name: posts
     label: Posts
-    folder: "posts"
+    folder: "src/posts"
     create: true
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "post.template"}
