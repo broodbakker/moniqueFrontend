@@ -57,21 +57,23 @@ const getSameCategory = (category: string, notThisArticle: number) => {
 }
 
 
-
-
 const LeesMeer = ({ nameOfCategory, notThisArticle }: any) => {
-  const articles = getSameCategory(nameOfCategory, notThisArticle)
-  const classes = useStyles();
+  console.log(nameOfCategory, notThisArticle)
+  // console.log(nameOfCategory, notThisArticle)
+  // const articles = getSameCategory(nameOfCategory, notThisArticle)
+  // const classes = useStyles();
   return (
 
-    <>{articles.length !== 0 && <div className={classes.root}>
+    <>
+      {/* {articles.length !== 0 && <div className={classes.root}>
       <Typography variant="subtitle1" className={classes.title} >
         Lees Meer
 </Typography>
       {articles.map((articleData, index) => {
         if (index < 5) return <Article articleData={articleData} key={index} />
       })}
-    </div>}
+    </div>} */}
+
     </>
 
 
@@ -80,7 +82,6 @@ const LeesMeer = ({ nameOfCategory, notThisArticle }: any) => {
 
 
 const Article = ({ articleData }: any) => {
-  console.log()
   const classes = useStyles();
 
   const id = `${articleData.id}`

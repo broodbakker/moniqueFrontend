@@ -34,6 +34,7 @@ const importBlogPosts = async () => {
   const markdownFiles = require.context('../src/posts', false, /\.md$/).keys()
     .map(relativePath => relativePath.substring(2));
 
+
   return Promise.all(
     markdownFiles.map(async path => {
       const markdown = await import(`../src/posts/${path}`);
@@ -44,10 +45,13 @@ const importBlogPosts = async () => {
 };
 
 export async function getStaticProps(context: any) {
-  const postsList = await importBlogPosts();
 
+
+  const postsList = await importBlogPosts();
   //if not SerializableError: Error serializing `.postsList[0].default.react` returned from `getStaticProps` in "/".
   const json = JSON.parse(JSON.stringify(postsList));
+
+
   return {
     props: { postsList: json }, // will be passed to the page component as props
   }

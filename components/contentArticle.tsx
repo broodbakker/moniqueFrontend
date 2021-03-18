@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme: Theme) => {
 const ContentPost = ({ blogpost }: any) => {
   const newDate = isoDateToStandardDate(blogpost.attributes.date)
   const classes = useStyles();
+
   return (
     <div>
       {blogpost && <div>   <Box height="60vw" className={classes.con}>
@@ -68,7 +69,7 @@ const ContentPost = ({ blogpost }: any) => {
           <div className={classes.subtitle}>
             <CreateIcon fontSize="small" />
             <Typography variant="subtitle2" component="p" display="inline" className={classes.author} >
-              author
+              {blogpost.attributes.auteur}
             </Typography>
 
             <Typography component="p" display="inline" >
@@ -102,7 +103,7 @@ const ContentPost = ({ blogpost }: any) => {
 
 
         <div dangerouslySetInnerHTML={{ __html: blogpost.html }}></div>
-        {/* <LeesMeer nameOfCategory={post.category} notThisArticle={post.id} /> */}
+        <LeesMeer nameOfCategory={blogpost.attributes.onderwerp} notThisArticle={blogpost.attributes.titel} />
       </div>}
 
 

@@ -17,9 +17,8 @@ const useStyles = makeStyles((theme: Theme) => {
 
 
 
-
 const searchFunction = (selectedArticles: string, postsList: any) => {
-  console.log("postsList", postsList)
+
   if (selectedArticles === "recent") return postsList
   const selectedArticlesContent = postsList.filter((content: any) =>
     content.attributes.onderwerp === selectedArticles

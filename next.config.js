@@ -1,18 +1,41 @@
-module.exports = {
-  webpack: config => {
-    // Fixes npm packages that depend on `fs` module
-    config.node = {
-      fs: 'empty'
-    },
-      config.module.rules.push(
-        {
-          test: /\.md$/,
-          loader: 'frontmatter-markdown-loader',
-          options: { mode: ['react-component'] }
-        }
-      )
+const fs = require('fs');
 
-    return config
-  }
-}
+const blogPostsFolder = './src/posts';
+
+
+module.exports = {
+  webpack: configuration => {
+    configuration.module.rules.push({
+      test: /\.md$/,
+      use: 'frontmatter-markdown-loader',
+    });
+    return configuration;
+  },
+  async exportPathMap(defaultPathMap) {
+    return {
+      ...defaultPathMap,
+      ...getPathsForPosts(),
+    };
+  },
+};
+
+
+const getPathsForPosts = () => {
+  return fs
+    .readdirSync(blogPostsFolder)
+    .map(blogName => {
+      const trimmedName = blogName.substring(0, blogName.length - 3);
+      return {
+        [`/src/posts/${trimmedName}`]: {
+          page: '/src/posts/[slug]',
+          query: {
+            slug: trimmedName,
+          },
+        },
+      };
+    })
+    .reduce((acc, curr) => {
+      return { ...acc, ...curr };
+    }, {});
+};
 
