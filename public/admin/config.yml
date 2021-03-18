@@ -35,8 +35,8 @@ collections:
       - {label: "Image", name: "image", widget: "image"}
 
       - {label: "Body", name: "body", widget: "markdown"}
-      - label: "Tags"
-        name: "tags"
+      - label: "Onderwerp"
+        name: "onderwerp"
         widget: "list"
         default: ["history","human","nature","quirky","space","tech"]
       - name: auteur
