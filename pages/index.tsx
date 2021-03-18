@@ -46,7 +46,6 @@ const importBlogPosts = async () => {
 
 export async function getStaticProps(context: any) {
 
-
   const postsList = await importBlogPosts();
   //if not SerializableError: Error serializing `.postsList[0].default.react` returned from `getStaticProps` in "/".
   const json = JSON.parse(JSON.stringify(postsList));

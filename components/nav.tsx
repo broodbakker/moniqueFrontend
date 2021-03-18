@@ -87,7 +87,6 @@ const Nav = (props: any) => {
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
-
     const path: string = tabNameToIndex[newValue]
     router.push(path)
   };
@@ -103,7 +102,7 @@ const Nav = (props: any) => {
             scrollButtons="on"
             indicatorColor="primary"
             textColor="primary"
-            aria-label="scrollable  tabs "
+            aria-label="scrollable tabs "
             className={classes.tabs}
             selectionFollowsFocus
           >

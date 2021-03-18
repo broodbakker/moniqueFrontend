@@ -1,5 +1,4 @@
 const fs = require('fs');
-
 const blogPostsFolder = './src/posts';
 
 
@@ -26,8 +25,8 @@ const getPathsForPosts = () => {
     .map(blogName => {
       const trimmedName = blogName.substring(0, blogName.length - 3);
       return {
-        [`/src/posts/${trimmedName}`]: {
-          page: '/src/posts/[slug]',
+        [`/posts/${trimmedName}`]: {
+          page: '/posts/[slug]',
           query: {
             slug: trimmedName,
           },

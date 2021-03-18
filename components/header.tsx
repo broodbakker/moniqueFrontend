@@ -91,8 +91,6 @@ const Header = () => {
   return (
     <Box color="white" className={classes.root} >
       <Toolbar className={classes.toolbar} >
-
-
         <Link href="/" >
           <a className={classes.logoTitle} >
             Logo

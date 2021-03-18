@@ -5,8 +5,6 @@ import Header from "../../components/header";
 import { Container, Box } from '@material-ui/core';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
-
-
 const useStyles = makeStyles((theme: Theme) => {
   return (
     createStyles({
@@ -25,23 +23,18 @@ const useStyles = makeStyles((theme: Theme) => {
 });
 
 export default function DynamicPage(props: any) {
-
-
   const classes = useStyles();
   return (
     <>
       <Box className={classes.headerBar}>
         <Header />
       </Box>
-
-
       <Container maxWidth="md" className={classes.container}>
         <ContentPost blogpost={props.blogpost} />
       </Container>
     </>
   )
 }
-
 
 const importBlogPosts = async () => {
   // https://medium.com/@shawnstern/importing-multiple-markdown-files-into-a-react-component-with-webpack-7548559fce6f
@@ -57,13 +50,9 @@ const importBlogPosts = async () => {
   );
 };
 
-
-
 export async function getStaticPaths() {
-
   const blogPosts = await importBlogPosts()
   const slugs = blogPosts.map((blogPost: any) => { return `/posts/${blogPost.slug}` })
-
 
   return {
     paths: [
