@@ -67,6 +67,7 @@ const Home = ({ postsList }: any) => {
     <>
       <Head title="nieuws" />
       <Box className={classes.headerBar}>
+        test
         <Header />
         <Nav />
       </Box>
