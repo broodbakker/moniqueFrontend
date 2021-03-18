@@ -1,5 +1,5 @@
 backend:
-  name: git-gateway
+  name: test-repo
   branch: master
 
 media_folder: public/img
@@ -7,11 +7,11 @@ public_folder: /img
 publish_mode: editorial_workflow
 
 collections:
-  - name: "Posts"
-    label: "posts"
+  - name: "posts"
+    label: "Posts"
     label_singular: "Post"
     description: >
-      Artikelen van Monique
+      Artikelen
     folder: "src/pages/blog"
     create: true
     fields:
@@ -25,11 +25,39 @@ collections:
         name: "onderwerp"
         widget: select
         options: ["history", "nature", "human","quirky","space","tech"]
-      - label: "Tags"
-        name: "tag"
-        collapsed: false
-        widget: "list"
-        fields:
-          - {label: Add tag, name: add tag, widget: string,}
+      - label: "Post auteur"
+        name: "auteur"
+        widget: "relation"
+        collection: "auteurs"
+        display_fields: ['naam']
+        search_fields: ['naam']
+        value_field: 'naam'
+      - label: "Post tags"
+        name: "tags"
+        widget: "relation"
+        collection: "tags"
+        display_fields: ['naam']
+        search_fields: ['naam']
+        value_field: 'naam'
+
+  - name: "auteurs"
+    label: "Auteurs"
+    label_singular: "auteur"
+    description: >
+      auteurs die stukken hebben geschreven
+    folder: "src/pages/blog"
+    create: true
+    fields:
+      - {label: "Naam", name: "naam", widget: "string"}
+  - name: "tags"
+    label: "Tags"
+    label_singular: "tag"
+    description: >
+      tags van de verschillende stukken
+    folder: "src/pages/blog"
+    create: true
+    fields:
+      - {label: "Naam", name: "naam", widget: "string"}
+
 
 
