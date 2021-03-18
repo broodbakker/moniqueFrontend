@@ -3,7 +3,7 @@ templateKey: post.template
 titel: sd
 Subtitel: dafs
 date: 2021-03-18T10:45:56.283Z
-image: /public/img/post2.png
+image: /img/post2.png
 auteur: martijn
 tags:
   - test2
