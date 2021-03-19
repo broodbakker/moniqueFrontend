@@ -4,7 +4,6 @@ import { Box, Button, Card, CardMedia, Typography } from '@material-ui/core';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import CreateIcon from '@material-ui/icons/Create';
-import content from "../content/content.json"
 import LeesMeer from './leesMeer';
 
 
@@ -20,8 +19,11 @@ const useStyles = makeStyles((theme: Theme) => {
         marginBottom: theme.spacing(3),
         marginTop: theme.spacing(2)
       },
-      subtitle: {
+      auteurcon: {
         marginBottom: theme.spacing(2)
+      },
+      subtitel: {
+        fontWeight: 600
       },
       con: {
         maxHeight: theme.spacing(100),
@@ -48,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) => {
 const ContentPost = ({ blogpost }: any) => {
   const newDate = isoDateToStandardDate(blogpost.attributes.date)
   const classes = useStyles();
-
+  console.log("blogpost", blogpost)
   return (
     <div>
       {blogpost && <div>   <Box height="60vw" className={classes.con}>
@@ -66,7 +68,7 @@ const ContentPost = ({ blogpost }: any) => {
           <Typography variant="h6" component="h1" className={classes.title}>
             {blogpost.attributes.titel}
           </Typography>
-          <div className={classes.subtitle}>
+          <div className={classes.auteurcon}>
             <CreateIcon fontSize="small" />
             <Typography variant="subtitle2" component="p" display="inline" className={classes.author} >
               {blogpost.attributes.auteur}
@@ -96,8 +98,10 @@ const ContentPost = ({ blogpost }: any) => {
               monique
         </Button>
           </div>
+          <Typography variant="body1" component="h3" className={classes.subtitel} >
+            {blogpost.attributes.Subtitel}
+          </Typography>
         </div>
-
 
 
 
