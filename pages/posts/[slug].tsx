@@ -17,6 +17,8 @@ const useStyles = makeStyles((theme: Theme) => {
       container: {
         paddingTop: 96,
         [theme.breakpoints.up('sm')]: { paddingTop: 120, },
+        maxWidth: 800,
+
       }
     })
   )
@@ -29,7 +31,7 @@ export default function DynamicPage(props: any) {
       <Box className={classes.headerBar}>
         <Header />
       </Box>
-      <Container maxWidth="md" className={classes.container}>
+      <Container className={classes.container}>
         <ContentPost blogpost={props.blogpost} />
       </Container>
     </>
@@ -53,6 +55,7 @@ const importBlogPosts = async () => {
 export async function getStaticPaths() {
   const blogPosts = await importBlogPosts()
   const slugs = blogPosts.map((blogPost: any) => { return `/posts/${blogPost.slug}` })
+
 
   return {
     paths: [

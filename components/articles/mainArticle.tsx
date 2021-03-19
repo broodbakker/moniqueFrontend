@@ -45,10 +45,10 @@ const MainArticle = ({ articleContent }: any) => {
             <a>
               <Card className={classes.root}>
                 <CardMedia
-                  image="/img/post2.png"
+                  image={articleContent.attributes.image}
                   title={classes.content}
                   className={classes.media}
-                  src="/img/post2.png"
+                  src={articleContent.attributes.image}
                 >
                   <CardContent className={classes.content}>
                     <Box>

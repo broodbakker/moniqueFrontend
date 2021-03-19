@@ -2,7 +2,9 @@ import React from 'react'
 import { useRouter, NextRouter } from 'next/router'
 
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { AppBar, useScrollTrigger, Tabs, Tab } from '@material-ui/core';
+import { AppBar, useScrollTrigger, Tabs, Tab, Hidden, IconButton } from '@material-ui/core';
+import { Menu } from '@material-ui/icons'
+
 
 
 function a11yProps(index: number) {
@@ -39,7 +41,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: theme.palette.background.paper,
   },
   tabs: {
-    FontSize: "2rem",
     minHeight: theme.spacing(10),
     [theme.breakpoints.up('sm')]: {
       margin: "auto",
@@ -48,7 +49,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   tab: {
     minHeight: theme.spacing(10),
     minWidth: theme.spacing(18),
-  }
+
+  },
+  menuButton: {
+
+  },
 }));
 
 
@@ -68,15 +73,12 @@ function ElevationScroll(props: any) {
   });
 }
 
-
-
 const WhichRouteHighlight = (indexToTabName: { [key: string]: number }, router: NextRouter) => {
   const routeExists = router.route in indexToTabName
   if (routeExists) return indexToTabName[router.route]
   return 10
 
 }
-
 
 const Nav = (props: any) => {
   const classes = useStyles();
@@ -95,25 +97,27 @@ const Nav = (props: any) => {
     <div className={classes.root}>
       <ElevationScroll {...props}>
         <AppBar position="static" color="default" elevation={0} >
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            variant="scrollable"
-            scrollButtons="on"
-            indicatorColor="primary"
-            textColor="primary"
-            aria-label="scrollable tabs "
-            className={classes.tabs}
-            selectionFollowsFocus
-          >
-            <Tab label="Recent"{...a11yProps(0)} className={classes.tab} />
-            <Tab label="History"{...a11yProps(1)} className={classes.tab} />
-            <Tab label="Nature"  {...a11yProps(2)} className={classes.tab} />
-            <Tab label="Human"  {...a11yProps(3)} className={classes.tab} />
-            <Tab label="Quirky"  {...a11yProps(4)} className={classes.tab} />
-            <Tab label="Space"  {...a11yProps(5)} className={classes.tab} />
-            <Tab label="Tech"  {...a11yProps(6)} className={classes.tab} />
-          </Tabs>
+          <Hidden xsDown>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              variant="scrollable"
+              scrollButtons="on"
+              indicatorColor="primary"
+              textColor="primary"
+              aria-label="scrollable tabs "
+              className={classes.tabs}
+              selectionFollowsFocus
+            >
+              <Tab label="Recent"{...a11yProps(0)} className={classes.tab} />
+              <Tab label="History"{...a11yProps(1)} className={classes.tab} />
+              <Tab label="Nature"  {...a11yProps(2)} className={classes.tab} />
+              <Tab label="Human"  {...a11yProps(3)} className={classes.tab} />
+              <Tab label="Quirky"  {...a11yProps(4)} className={classes.tab} />
+              <Tab label="Space"  {...a11yProps(5)} className={classes.tab} />
+              <Tab label="Tech"  {...a11yProps(6)} className={classes.tab} />
+            </Tabs>
+          </Hidden >
         </AppBar>
       </ElevationScroll>
     </div >

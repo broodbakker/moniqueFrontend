@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme: Theme) => {
       root: {
         marginTop: theme.spacing(2),
         padding: theme.spacing(1),
-
       },
       media: {
         height: "100%",
@@ -26,12 +25,10 @@ const useStyles = makeStyles((theme: Theme) => {
         margin: "auto",
         color: theme.palette.primary.dark,
         lineHeight: 1.3
-
       },
       test: {
         lineHeight: 0.3
       },
-
       article: {
         backgroundColor: theme.palette.grey[50],
         height: theme.spacing(20),
@@ -57,17 +54,14 @@ const useStyles = makeStyles((theme: Theme) => {
       },
       content: {
         position: "relative",
-        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(2),
         flexGrow: 1
       }
     }))
 }
 );
 
-
 const ListOfArticles = ({ pageIndex, articleListContent }: any) => {
-
-
   const classes = useStyles();
   return (
     <Box color="blue" className={classes.root} >
@@ -83,10 +77,6 @@ const ListOfArticles = ({ pageIndex, articleListContent }: any) => {
           const update = content.slug
           const link = `/posts/${update}`;
           const newDate = isoDateToStandardDate(content.attributes.date)
-
-
-
-
 
           return (
             <Grid container item xs={12} sm={6} key={index}>

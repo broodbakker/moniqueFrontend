@@ -58,7 +58,7 @@ const getSameCategory = (category: string, notThisArticle: number) => {
 
 
 const LeesMeer = ({ nameOfCategory, notThisArticle }: any) => {
-  console.log(nameOfCategory, notThisArticle)
+
   // console.log(nameOfCategory, notThisArticle)
   // const articles = getSameCategory(nameOfCategory, notThisArticle)
   // const classes = useStyles();
