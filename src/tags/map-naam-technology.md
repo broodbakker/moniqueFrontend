@@ -1,3 +1,3 @@
 ---
-naam: technology
+naam: internet
 ---
